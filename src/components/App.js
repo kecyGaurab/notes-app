@@ -5,17 +5,17 @@ import Note from './Note';
 
 const App = () => {
   const [notes, setNotes] = useState([]);
-  const [newNote, setNewNote] = useState('');
+  const [newNote, setNewNote] = useState({ content: '', done: false });
 
   const handleNoteChange = (event) => {
     event.preventDefault();
-    setNewNote(event.target.value);
+    setNewNote({ ...newNote, content: event.target.value });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setNotes(notes.concat(newNote));
-    setNewNote('');
+    setNewNote({ ...newNote, content: '' });
   };
 
   const handleRemove = (id) => {
@@ -23,12 +23,23 @@ const App = () => {
     setNotes(newNotes);
   };
 
+  const handleStatus = (id) => {
+    const note = notes.find((n) => n === id);
+    const changedNote = { ...note, done: !note.done };
+    const filteredNote = notes.filter((n) => n !== note);
+    setNotes(filteredNote.concat(changedNote));
+  };
+
+
   return (
     <div className="App">
       <h1>Note App</h1>
       <AddNote handleSubmit={handleSubmit} newNote={newNote} handleNoteChange={handleNoteChange} />
       {notes
-        ? notes.map((note, index) => <Note key={index} note={note} handleRemove={handleRemove} />)
+        ? notes.map((note, index) => (
+            // eslint-disable-next-line react/jsx-indent
+            <Note key={index} note={note} handleRemove={handleRemove} handleStatus={handleStatus} />
+          ))
         : null}
     </div>
   );
