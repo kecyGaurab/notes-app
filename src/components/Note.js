@@ -6,10 +6,10 @@ const Note = (props) => {
     <div>
       <span>{note.content}</span>
       {/* {note.done ? <span style={{ margin: '5px' }}>done</span> : null} */}
-      <button style={{ marginLeft: '15px' }} type="button" onClick={() => handleStatus(note)}>
+      <button style={{ marginLeft: '15px' }} type="button" onClick={handleStatus}>
         {note.done ? 'not done' : 'mark as done'}
       </button>
-      <button style={{ marginLeft: '15px' }} type="button" onClick={() => handleRemove(note)}>
+      <button style={{ marginLeft: '15px' }} type="button" onClick={handleRemove}>
         remove
       </button>
     </div>
