@@ -7,8 +7,10 @@ const AddNote = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input value={newNote} onChange={handleNoteChange} />
-        <button type="submit">Add</button>
+        <input value={newNote.content || ''} onChange={handleNoteChange} />
+        <button disabled={newNote.content.length < 1} type="submit">
+          Add
+        </button>
       </form>
     </div>
   );
