@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-undef */
 /* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react';
@@ -23,29 +24,37 @@ const App = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    noteService.create(newNote).then((res) => {
-      setNotes(notes.concat(res.data));
-      setNewNote({ ...newNote, content: '' });
-    });
+    noteService
+      .create(newNote)
+      .then((res) => {
+        setNotes(notes.concat(res.data));
+        setNewNote({ ...newNote, content: '' });
+      })
+      .catch((error) => alert(error));
   };
 
   const handleRemove = (id) => {
-    const url = `http://localhost:3001/notes/${id}`;
     const newNotes = notes.filter((note) => note.id !== id);
     // eslint-disable-next-line no-alert
     if (window.confirm(`Are you sure you want to delete the note ?`)) {
-      axios.delete(url).then(() => {
-        setNotes(newNotes);
-      });
+      noteService
+        .remove(id)
+        .then(() => {
+          setNotes(newNotes);
+        })
+        .catch((error) => alert(error));
     }
   };
 
   const handleStatus = (id) => {
     const note = notes.find((n) => n.id === id);
     const changedNote = { ...note, done: !note.done };
-    noteService.update(id, changedNote).then((res) => {
-      setNotes(notes.map((no) => (no.id !== id ? no : res.data)));
-    });
+    noteService
+      .update(id, changedNote)
+      .then((res) => {
+        setNotes(notes.map((no) => (no.id !== id ? no : res.data)));
+      })
+      .catch(() => alert('The note has already been removed'));
   };
 
   return (
