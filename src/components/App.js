@@ -30,7 +30,6 @@ const App = () => {
     setNotes(filteredNote.concat(changedNote));
   };
 
-
   return (
     <div className="App">
       <h1>Note App</h1>
