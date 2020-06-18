@@ -12,7 +12,6 @@ const App = () => {
 
   useEffect(() => {
     noteService.getAll().then((response) => {
-      console.log('reponse', response.data);
       setNotes(response.data);
     });
   }, []);
