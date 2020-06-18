@@ -2,7 +2,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import AddNote from './AddNote';
 import Note from './Note';
 import noteService from '../services/notes';
@@ -13,6 +12,7 @@ const App = () => {
 
   useEffect(() => {
     noteService.getAll().then((response) => {
+      console.log('reponse', response.data);
       setNotes(response.data);
     });
   }, []);
