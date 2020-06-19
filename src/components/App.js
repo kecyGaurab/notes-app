@@ -1,6 +1,6 @@
+/* eslint-disable no-console */
 /* eslint-disable no-alert */
 /* eslint-disable no-undef */
-/* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react';
 import AddNote from './AddNote';
 import Note from './Note';
@@ -21,7 +21,6 @@ const App = () => {
     setNewNote({ ...newNote, content: event.target.value });
   };
 
-  // eslint-disable-next-line no-console
   console.log('notes', notes);
 
   const handleSubmit = async (event) => {
@@ -62,19 +61,27 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Note App</h1>
-      <AddNote handleSubmit={handleSubmit} newNote={newNote} handleNoteChange={handleNoteChange} />
-      {notes
-        ? notes.map((note, index) => (
-            // eslint-disable-next-line react/jsx-indent
-            <Note
-              key={index}
-              note={note}
-              handleRemove={() => handleRemove(note.id)}
-              handleStatus={() => handleStatus(note.id)}
-            />
-          ))
-        : null}
+      <div style={{ padding: '10px' }}>
+        <h1>Note App</h1>
+        <AddNote
+          handleSubmit={handleSubmit}
+          newNote={newNote}
+          handleNoteChange={handleNoteChange}
+        />
+      </div>
+      <div style={{ padding: '10px' }}>
+        {notes
+          ? notes.map((note) => (
+              // eslint-disable-next-line react/jsx-indent
+              <Note
+                key={note.id}
+                note={note}
+                handleRemove={() => handleRemove(note.id)}
+                handleStatus={() => handleStatus(note.id)}
+              />
+            ))
+          : null}
+      </div>
     </div>
   );
 };
