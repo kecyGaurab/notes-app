@@ -82,14 +82,15 @@ app.post('/api/notes', (request, response) => {
     });
   }
 
-  const note = {
+  const note = new Note({
     content: body.content,
     done: body.done || false,
     id: generateId(),
-  };
-
-  notes = notes.concat(note);
-  response.json(note);
+    date: new Date(),
+  });
+  note.save().then((savedNote) => {
+    response.json(savedNote.toJSON());
+  });
 });
 
 app.delete('/api/notes/:id', (request, response) => {
