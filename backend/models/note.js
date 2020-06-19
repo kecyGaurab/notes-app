@@ -3,21 +3,6 @@
 /* eslint-disable no-param-reassign */
 const mongoose = require('mongoose');
 
-const url = process.env.MONGODB_URI;
-
-mongoose
-  .connect(url, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useFindAndModify: false,
-  })
-  .then(() => {
-    console.log('connected to MongoDB');
-  })
-  .catch((error) => {
-    console.log('error connecting to MongoDB:', error.message);
-  });
-
 const noteSchema = new mongoose.Schema({
   content: String,
   date: Date,
