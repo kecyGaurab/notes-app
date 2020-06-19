@@ -1,13 +1,16 @@
+/* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-param-reassign */
 const mongoose = require('mongoose');
 
 const url = process.env.MONGODB_URI;
 
-console.log('connecting to', url);
-
 mongoose
-  .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(url, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useFindAndModify: false,
+  })
   .then(() => {
     console.log('connected to MongoDB');
   })
@@ -18,7 +21,7 @@ mongoose
 const noteSchema = new mongoose.Schema({
   content: String,
   date: Date,
-  important: Boolean,
+  done: Boolean,
 });
 
 noteSchema.set('toJSON', {
