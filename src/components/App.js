@@ -12,7 +12,7 @@ const App = () => {
 
   useEffect(() => {
     noteService.getAll().then((response) => {
-      setNotes(response.data);
+      setNotes(response);
     });
   }, []);
 
@@ -21,39 +21,43 @@ const App = () => {
     setNewNote({ ...newNote, content: event.target.value });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    noteService
-      .create(newNote)
-      .then((res) => {
-        setNotes(notes.concat(res.data));
-        setNewNote({ ...newNote, content: '' });
-      })
-      .catch((error) => alert(error));
-  };
+  // eslint-disable-next-line no-console
+  console.log('notes', notes);
 
-  const handleRemove = (id) => {
-    const newNotes = notes.filter((note) => note.id !== id);
-    // eslint-disable-next-line no-alert
-    if (window.confirm(`Are you sure you want to delete the note ?`)) {
-      noteService
-        .remove(id)
-        .then(() => {
-          setNotes(newNotes);
-        })
-        .catch((error) => alert(error));
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await noteService.create(newNote);
+      setNotes(notes.concat(response));
+      setNewNote({ ...newNote, content: '' });
+    } catch (error) {
+      alert(error);
     }
   };
 
-  const handleStatus = (id) => {
+  const handleRemove = async (id) => {
+    const newNotes = notes.filter((note) => note.id !== id);
+    // eslint-disable-next-line no-alert
+    if (window.confirm(`Are you sure you want to delete the note ?`)) {
+      try {
+        await noteService.remove(id);
+        setNotes(newNotes);
+      } catch (error) {
+        alert(error);
+      }
+    }
+  };
+
+  const handleStatus = async (id) => {
     const note = notes.find((n) => n.id === id);
     const changedNote = { ...note, done: !note.done };
-    noteService
-      .update(id, changedNote)
-      .then((res) => {
-        setNotes(notes.map((no) => (no.id !== id ? no : res.data)));
-      })
-      .catch(() => alert('The note has already been removed'));
+
+    try {
+      const response = await noteService.update(id, changedNote);
+      setNotes(notes.map((n) => (n.id !== id ? n : response)));
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
