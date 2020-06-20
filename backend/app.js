@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const config = require('./utils/config');
 
 const app = express();
-app.use(cors());
 const notesRouter = require('./controllers/notes');
 const middleware = require('./utils/middleware');
 const logger = require('./utils/logger');
@@ -13,6 +12,7 @@ const logger = require('./utils/logger');
 logger.info('connecting to', config.MONGODB_URI);
 // mongoose.set('useCreateIndex', true)
 
+app.use(cors());
 app.use(express.static('build'));
 
 mongoose
