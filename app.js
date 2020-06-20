@@ -12,9 +12,9 @@ const logger = require('./utils/logger');
 logger.info('connecting to', config.MONGODB_URI);
 // mongoose.set('useCreateIndex', true)
 
+app.use('/api/notes', notesRouter);
 app.use(cors());
 app.use(express.static('build'));
-app.use('/api/notes', notesRouter);
 
 mongoose
   .connect(config.MONGODB_URI, {
