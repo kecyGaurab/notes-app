@@ -33,9 +33,9 @@ app.use(middleware.requestLogger);
 
 app.use('/api/notes', notesRouter);
 
-app.use((req, res) => {
-	res.sendFile(path.join(__dirname, 'client/build/index.html'));
-});
+// app.use((req, res) => {
+// 	res.sendFile(path.join(__dirname, 'client/build/index.html'));
+// });
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
