@@ -16,7 +16,11 @@ logger.info('connecting to', config.MONGODB_URI);
 app.use(express.static('build'));
 
 mongoose
-  .connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(config.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
   .then(() => {
     logger.info('connected to MongoDB');
   })
