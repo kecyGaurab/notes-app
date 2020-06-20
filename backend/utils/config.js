@@ -1,7 +1,7 @@
 /* eslint-disable prefer-const */
 require('dotenv').config();
 
-const PORT = process.env.PORT || 3001;
+const { PORT } = process.env;
 let { MONGODB_URI } = process.env;
 
 // if (process.env.NODE_ENV === 'test') {
