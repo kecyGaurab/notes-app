@@ -14,6 +14,7 @@ logger.info('connecting to', config.MONGODB_URI);
 
 app.use(cors());
 app.use(express.static('build'));
+app.use('/api/notes', notesRouter);
 
 mongoose
   .connect(config.MONGODB_URI, {
@@ -30,7 +31,6 @@ mongoose
 
 app.use(bodyParser.json());
 app.use(middleware.requestLogger);
-app.use('/api/notes', notesRouter);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
