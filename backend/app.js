@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const config = require('./utils/config');
 
 const app = express();
+app.use(cors());
 const notesRouter = require('./controllers/notes');
 const middleware = require('./utils/middleware');
 const logger = require('./utils/logger');
@@ -21,7 +22,6 @@ mongoose
     logger.error('error connection to MongoDB:', error.message);
   });
 
-app.use(cors());
 app.use(bodyParser.json());
 app.use(middleware.requestLogger);
 app.use('/api/notes', notesRouter);
