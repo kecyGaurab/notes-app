@@ -1,4 +1,5 @@
-const notesRouter = require('express').Router();
+const express = require('express')
+const notesRouter = express.Router();
 const Note = require('../models/note');
 
 notesRouter.get('/:id', async (request, response, next) => {
