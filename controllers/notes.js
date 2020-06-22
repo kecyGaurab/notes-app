@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+
 const notesRouter = express.Router();
 const Note = require('../models/note');
 
@@ -60,5 +61,4 @@ notesRouter.put('/:id', async (request, response, next) => {
     next(error);
   }
 });
-
 module.exports = notesRouter;

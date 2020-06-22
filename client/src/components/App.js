@@ -1,6 +1,6 @@
-/* eslint-disable no-console */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable no-alert */
-/* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
 import AddNote from './AddNote';
 import Note from './Note';
@@ -20,8 +20,6 @@ const App = () => {
     event.preventDefault();
     setNewNote({ ...newNote, content: event.target.value });
   };
-
-  console.log('notes', notes);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -72,7 +70,6 @@ const App = () => {
       <div style={{ padding: '10px' }}>
         {notes
           ? notes.map((note) => (
-              // eslint-disable-next-line react/jsx-indent
               <Note
                 key={note.id}
                 note={note}

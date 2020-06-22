@@ -1,9 +1,7 @@
-/* eslint-disable no-console */
 import React from 'react';
 
 const AddNote = (props) => {
   const { handleNoteChange, handleSubmit, newNote } = props;
-
   return (
     <div>
       <form onSubmit={handleSubmit}>
