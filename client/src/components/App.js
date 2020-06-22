@@ -2,10 +2,11 @@
 /* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
-import { Card } from '@material-ui/core';
+import { Card, Container, CssBaseline, Grid, Typography } from '@material-ui/core';
 import AddNote from './AddNote';
 import Note from './Note';
 import noteService from '../services/notes';
+import NavBar from './NavBar';
 
 const App = () => {
   const [notes, setNotes] = useState([]);
@@ -59,30 +60,37 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <Card>
-        <div style={{ padding: '10px' }}>
-          <h1>Note App</h1>
-          <AddNote
-            handleSubmit={handleSubmit}
-            newNote={newNote}
-            handleNoteChange={handleNoteChange}
-          />
-        </div>
-        <div style={{ padding: '10px' }}>
-          {notes
-            ? notes.map((note) => (
-                <Note
-                  key={note.id}
-                  note={note}
-                  handleRemove={() => handleRemove(note.id)}
-                  handleStatus={() => handleStatus(note.id)}
-                />
-              ))
-            : null}
-        </div>
-      </Card>
-    </div>
+    <>
+      <Container>
+        <Card square>
+          <CssBaseline />
+          <Grid container direction="column" justify="center" spacing={2}>
+            <Grid item>
+              <NavBar />
+            </Grid>
+            <Grid item>
+              <AddNote
+                handleSubmit={handleSubmit}
+                newNote={newNote}
+                handleNoteChange={handleNoteChange}
+              />
+            </Grid>
+            <Grid item>
+              {notes
+                ? notes.map((note) => (
+                  <Note
+                    key={note.id}
+                    note={note}
+                    handleRemove={() => handleRemove(note.id)}
+                    handleStatus={() => handleStatus(note.id)}
+                  />
+                ))
+                : null}
+            </Grid>
+          </Grid>
+        </Card>
+      </Container>
+    </>
   );
 };
 
