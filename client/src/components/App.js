@@ -78,13 +78,13 @@ const App = () => {
             <Grid item>
               {notes
                 ? notes.map((note) => (
-                  <Note
-                    key={note.id}
-                    note={note}
-                    handleRemove={() => handleRemove(note.id)}
-                    handleStatus={() => handleStatus(note.id)}
-                  />
-                ))
+                    <Note
+                      key={note.id}
+                      note={note}
+                      handleRemove={() => handleRemove(note.id)}
+                      handleStatus={() => handleStatus(note.id)}
+                    />
+                  ))
                 : null}
             </Grid>
           </Grid>
