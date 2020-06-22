@@ -2,6 +2,7 @@
 /* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
+import { Card } from '@material-ui/core';
 import AddNote from './AddNote';
 import Note from './Note';
 import noteService from '../services/notes';
@@ -59,26 +60,28 @@ const App = () => {
 
   return (
     <div className="App">
-      <div style={{ padding: '10px' }}>
-        <h1>Note App</h1>
-        <AddNote
-          handleSubmit={handleSubmit}
-          newNote={newNote}
-          handleNoteChange={handleNoteChange}
-        />
-      </div>
-      <div style={{ padding: '10px' }}>
-        {notes
-          ? notes.map((note) => (
-              <Note
-                key={note.id}
-                note={note}
-                handleRemove={() => handleRemove(note.id)}
-                handleStatus={() => handleStatus(note.id)}
-              />
-            ))
-          : null}
-      </div>
+      <Card>
+        <div style={{ padding: '10px' }}>
+          <h1>Note App</h1>
+          <AddNote
+            handleSubmit={handleSubmit}
+            newNote={newNote}
+            handleNoteChange={handleNoteChange}
+          />
+        </div>
+        <div style={{ padding: '10px' }}>
+          {notes
+            ? notes.map((note) => (
+                <Note
+                  key={note.id}
+                  note={note}
+                  handleRemove={() => handleRemove(note.id)}
+                  handleStatus={() => handleStatus(note.id)}
+                />
+              ))
+            : null}
+        </div>
+      </Card>
     </div>
   );
 };

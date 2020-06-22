@@ -1,16 +1,17 @@
 import React from 'react';
+import { Button, Grid, TextField } from '@material-ui/core';
 
 const AddNote = (props) => {
   const { handleNoteChange, handleSubmit, newNote } = props;
   return (
-    <div>
+    <Grid>
       <form onSubmit={handleSubmit}>
-        <input value={newNote.content || ''} onChange={handleNoteChange} />
-        <button disabled={newNote.content.length < 1} type="submit">
+        <TextField variant="outlined" value={newNote.content || ''} onChange={handleNoteChange} />
+        <Button disabled={newNote.content.length < 1} type="submit">
           Add
-        </button>
+        </Button>
       </form>
-    </div>
+    </Grid>
   );
 };
 

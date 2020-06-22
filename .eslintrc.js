@@ -28,6 +28,7 @@ module.exports = {
         enforceForRenamedProperties: false,
       },
     ],
+    'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
     'react/react-in-jsx-scope': 'off',
