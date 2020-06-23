@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
-import { Card, Container, CssBaseline, Grid, Typography } from '@material-ui/core';
+import { Card, Container, CssBaseline, Grid } from '@material-ui/core';
 import AddNote from './AddNote';
 import Note from './Note';
 import noteService from '../services/notes';

@@ -1532,9 +1532,9 @@ escape-string-regexp@^1.0.5:
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
 escodegen@^1.9.1:
-  version "1.14.2"
-  resolved "https://registry.yarnpkg.com/escodegen/-/escodegen-1.14.2.tgz#14ab71bf5026c2aa08173afba22c6f3173284a84"
-  integrity sha512-InuOIiKk8wwuOFg6x9BQXbzjrQhtyXh46K9bqVTPzSo2FnyMBaYGBMC6PhQy7yxxil9vIedFBweQBMK74/7o8A==
+  version "1.14.3"
+  resolved "https://registry.yarnpkg.com/escodegen/-/escodegen-1.14.3.tgz#4e7b81fba61581dc97582ed78cab7f0e8d63f503"
+  integrity sha512-qFcX0XJkdg+PB3xjZZG/wKSuT1PnQWx57+TVSjIMmILd2yC/6ByYElPwJnslDsuWuSAp4AwJGumarAAmJch5Kw==
   dependencies:
     esprima "^4.0.1"
     estraverse "^4.2.0"
@@ -1585,9 +1585,9 @@ eslint-module-utils@^2.4.1:
     pkg-dir "^2.0.0"
 
 eslint-plugin-eslint-plugin@^2.1.0:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-eslint-plugin/-/eslint-plugin-eslint-plugin-2.2.2.tgz#12c20be154ab8b37497bbc6159d87c14f9d4a863"
-  integrity sha512-JlDG/Bzel1Fl+qbDyP52AaMpgBF7GE3bhlQCWae8MTbwnDvFViCaAyHp8lOvmCOVzHozGalcS3QsuvAX+bOR0w==
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-eslint-plugin/-/eslint-plugin-eslint-plugin-2.3.0.tgz#1b6ffd13b74da5656e27106b79567b162984fc41"
+  integrity sha512-xER9XjfTLrAgoUzPguPKoreDGtXt2vUnwqAqdElNrkcSbl5K1rGtSOmhgbiqCb7UN4spnjNhIZplHMNWY6Kz/w==
 
 eslint-plugin-import@2.19.1:
   version "2.19.1"
@@ -3515,9 +3515,9 @@ mongoose-legacy-pluralize@1.0.2:
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
 mongoose@^5.9.19:
-  version "5.9.19"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.9.19.tgz#fadedce84e3f49b7ea335b73d2a60d2df97d69e1"
-  integrity sha512-wJ5FR2ykvyd17MRHA6sku/N1CMaC/kf4CnN357htD48RpzJhW60YDkxPSPLbkLg8Woa+i7jYi0glhzC0EcBcRQ==
+  version "5.9.20"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.9.20.tgz#975255196104ce760386ab439b1dad43caae23b5"
+  integrity sha512-vRP6Csu2obzSl3ed7kTQMrolBNgweiRJ/eBU1PSe/rJfjqWS1oqDE2D1ZPGxkVOsKXs7Gyd84GAXerj8IB2UWg==
   dependencies:
     bson "^1.1.4"
     kareem "2.3.1"
