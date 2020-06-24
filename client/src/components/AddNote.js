@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Dialog, Button, DialogContent, DialogActions } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 import Form from './form';
 
 const AddNote = (props) => {
@@ -8,8 +9,8 @@ const AddNote = (props) => {
     <Container>
       <Dialog open={dialogOpen} disablePortal disableEnforceFocus>
         <DialogActions>
-          <Button variant="contained" onClick={handleDialog}>
-            Close
+          <Button onClick={handleDialog}>
+            <CloseIcon />
           </Button>
         </DialogActions>
         <DialogContent>
