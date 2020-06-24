@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const supertest = require('supertest');
 const mongoose = require('mongoose');
 const helper = require('./test_helper');
@@ -34,7 +35,8 @@ test('one note is returned', async () => {
   const response = await api.get('/api/notes');
 
   const contents = response.body.map((res) => res.content);
-expect(contents).toContain('The Maldives will reopen tourist resorts from 15 July, its President Ibrahim Solih has said - adding that international tourists would be welcomed. Foreign visitors will not need to undergo virus tests to enter the country.',
+  expect(contents).toContain(
+    'The Maldives will reopen tourist resorts from 15 July, its President Ibrahim Solih has said - adding that international tourists would be welcomed. Foreign visitors will not need to undergo virus tests to enter the country.',
   );
 });
 

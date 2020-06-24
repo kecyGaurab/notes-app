@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { TextField, Grid, Typography, Button, Card, CardContent } from '@material-ui/core';
 
@@ -35,7 +36,12 @@ const Form = ({ handleSubmit, handleChange, newNote }) => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Button color="primary" type="submit" variant="outlined">
+              <Button
+                disabled={newNote.title.length < 1 || newNote.content.length < 1}
+                color="primary"
+                type="submit"
+                variant="outlined"
+              >
                 Submit
               </Button>
             </Grid>
