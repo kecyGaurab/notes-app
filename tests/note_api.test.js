@@ -34,13 +34,14 @@ test('one note is returned', async () => {
   const response = await api.get('/api/notes');
 
   const contents = response.body.map((res) => res.content);
-  expect(contents).toContain('Make Dinner');
+expect(contents).toContain('The Maldives will reopen tourist resorts from 15 July, its President Ibrahim Solih has said - adding that international tourists would be welcomed. Foreign visitors will not need to undergo virus tests to enter the country.',
+  );
 });
 
 test('a new note can be added', async () => {
   const newNote = {
-    content: 'do assignment',
-    done: 'false',
+    title: 'hello',
+    content: 'How are you?',
   };
   await api
     .post('/api/notes')
@@ -52,7 +53,7 @@ test('a new note can be added', async () => {
   expect(totalNotes.length).toBe(helper.initialNotes.length + 1);
 
   const contents = totalNotes.map((t) => t.content);
-  expect(contents).toContain('do assignment');
+  expect(contents).toContain('How are you?');
 });
 
 test('a specific note can be deleted', async () => {
