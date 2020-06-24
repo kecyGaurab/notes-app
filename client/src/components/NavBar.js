@@ -1,21 +1,21 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import NoteSharpIcon from '@material-ui/icons/NoteSharp';
+import { AppBar, Grid, Typography, Toolbar } from '@material-ui/core';
+import Search from './search';
 
-const NavBar = () => (
+const NavBar = ({ handleQueryChange, query }) => (
   <>
     <AppBar color="primary" position="static">
       <Toolbar>
-        <IconButton edge="start" aria-label="menu">
-          <NoteSharpIcon />
-        </IconButton>
-
-        <Typography variant="h3" color="primary">
-          Notes
-        </Typography>
+        <Grid container justify="space-between">
+          <Grid item xs={3} align="right">
+            <Typography variant="h3" color="primary">
+              Notes
+            </Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <Search query={query} handleQueryChange={handleQueryChange} />
+          </Grid>
+        </Grid>
       </Toolbar>
     </AppBar>
   </>

@@ -1,26 +1,51 @@
+/* eslint-disable max-len */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
-import { Card, Container, CssBaseline, Grid } from '@material-ui/core';
-import AddNote from './AddNote';
+import { Button, Container, CssBaseline, Grid } from '@material-ui/core';
+import AddNote from './addNote';
 import Note from './Note';
+
 import noteService from '../services/notes';
-import NavBar from './NavBar';
+import NavBar from './navBar';
 
 const App = () => {
   const [notes, setNotes] = useState([]);
-  const [newNote, setNewNote] = useState({ content: '', done: false });
+  const [newNote, setNewNote] = useState({ title: '', content: '', done: false });
+  const [query, setQuery] = useState('');
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [filteredNotes, setFilteredNotes] = useState([]);
 
   useEffect(() => {
     noteService.getAll().then((response) => {
       setNotes(response);
     });
-  }, []);
+  }, [notes]);
 
-  const handleNoteChange = (event) => {
-    event.preventDefault();
-    setNewNote({ ...newNote, content: event.target.value });
+  useEffect(() => {
+    const handleFilter = () => {
+      const matchedNotes = notes.filter((n) =>
+        n.title.toLowerCase().startsWith(query.toLowerCase()),
+      );
+      setFilteredNotes(matchedNotes);
+    };
+    handleFilter();
+  }, [query, notes]);
+
+  const handleChange = (event) => {
+    setNewNote({
+      ...newNote,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleQueryChange = (event) => {
+    setQuery(event.target.value);
+  };
+
+  const handleDialog = () => {
+    setDialogOpen(false);
   };
 
   const handleSubmit = async (event) => {
@@ -28,10 +53,11 @@ const App = () => {
     try {
       const response = await noteService.create(newNote);
       setNotes(notes.concat(response));
-      setNewNote({ ...newNote, content: '' });
+      setNewNote({ ...newNote, title: '', content: '' });
     } catch (error) {
       alert(error);
     }
+    setDialogOpen(false);
   };
 
   const handleRemove = async (id) => {
@@ -61,34 +87,45 @@ const App = () => {
 
   return (
     <>
+      <CssBaseline />
+      <NavBar query={query} handleQueryChange={handleQueryChange} />
       <Container>
-        <Card square>
-          <CssBaseline />
-          <Grid container direction="column" justify="center" spacing={2}>
-            <Grid item>
-              <NavBar />
-            </Grid>
-            <Grid item>
-              <AddNote
-                handleSubmit={handleSubmit}
-                newNote={newNote}
-                handleNoteChange={handleNoteChange}
-              />
-            </Grid>
-            <Grid item>
-              {notes
-                ? notes.map((note) => (
-                    <Note
-                      key={note.id}
-                      note={note}
-                      handleRemove={() => handleRemove(note.id)}
-                      handleStatus={() => handleStatus(note.id)}
-                    />
-                  ))
-                : null}
-            </Grid>
+        <Grid container justify="space-around" direction="row" spacing={5}>
+          <Grid item xs={12} align="center">
+            <Button
+              variant="outlined"
+              size="large"
+              color="primary"
+              onClick={() => setDialogOpen(true)}
+            >
+              Add New
+            </Button>
+            <AddNote
+              handleDialog={handleDialog}
+              dialogOpen={dialogOpen}
+              handleSubmit={handleSubmit}
+              newNote={newNote}
+              handleChange={handleChange}
+            />
           </Grid>
-        </Card>
+          {filteredNotes.length !== 0
+            ? filteredNotes.map((note) => (
+                <Note
+                  key={note.id}
+                  note={note}
+                  handleRemove={() => handleRemove(note.id)}
+                  handleStatus={() => handleStatus(note.id)}
+                />
+              ))
+            : notes.map((note) => (
+                <Note
+                  key={note.id}
+                  note={note}
+                  handleRemove={() => handleRemove(note.id)}
+                  handleStatus={() => handleStatus(note.id)}
+                />
+              ))}
+        </Grid>
       </Container>
     </>
   );

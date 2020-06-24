@@ -4,9 +4,9 @@
 const mongoose = require('mongoose');
 
 const noteSchema = new mongoose.Schema({
+  title: String,
   content: String,
   date: Date,
-  done: Boolean,
 });
 
 noteSchema.set('toJSON', {

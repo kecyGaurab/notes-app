@@ -20,7 +20,9 @@ const theme = createMuiTheme({
 theme.overrides = {
   MuiCard: {
     root: {
-      borderRadius: '10px',
+      borderRadius: '15px',
+      width: '280px',
+      marginBottom: '40px',
     },
   },
   MuiContainer: {
@@ -38,8 +40,7 @@ theme.overrides = {
 
   MuiCardContent: {
     root: {
-      // !important over the default &:last-child padding-bottom
-      padding: `${theme.spacing(4)}px !important`,
+      padding: '25px !important',
     },
   },
   MuiDialog: {
