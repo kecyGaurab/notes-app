@@ -4,11 +4,11 @@
 /* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
 import { Button, Container, CssBaseline, Grid } from '@material-ui/core';
-import AddNote from './addNote';
+import AddNote from './AddNote';
 import Note from './Note';
 
 import noteService from '../services/notes';
-import NavBar from './navBar';
+import NavBar from './NavBar';
 
 const App = () => {
   const [notes, setNotes] = useState([]);
