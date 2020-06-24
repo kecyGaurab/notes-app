@@ -21,7 +21,7 @@ const App = () => {
     noteService.getAll().then((response) => {
       setNotes(response);
     });
-  }, [notes]);
+  }, []);
 
   useEffect(() => {
     const handleFilter = () => {
