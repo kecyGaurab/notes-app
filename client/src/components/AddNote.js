@@ -1,26 +1,22 @@
 import React from 'react';
-import { Grid, TextField, Button } from '@material-ui/core';
+import { Container, Dialog, Button, DialogContent, DialogActions } from '@material-ui/core';
+import Form from './form';
 
 const AddNote = (props) => {
-  const { handleNoteChange, handleSubmit, newNote } = props;
+  const { handleSubmit, handleChange, dialogOpen, newNote, handleDialog } = props;
   return (
-    <form onSubmit={handleSubmit}>
-      <Grid container justify="center">
-        <Grid item xs={6}>
-          <TextField
-            fullWidth
-            variant="outlined"
-            value={newNote.content || ''}
-            onChange={handleNoteChange}
-          />
-        </Grid>
-        <Grid item xs={2}>
-          <Button size="large" variant="text" disabled={newNote.content.length < 1} type="submit">
-            Add
+    <Container>
+      <Dialog open={dialogOpen} disablePortal disableEnforceFocus>
+        <DialogActions>
+          <Button variant="contained" onClick={handleDialog}>
+            Close
           </Button>
-        </Grid>
-      </Grid>
-    </form>
+        </DialogActions>
+        <DialogContent>
+          <Form handleSubmit={handleSubmit} handleChange={handleChange} newNote={newNote} />
+        </DialogContent>
+      </Dialog>
+    </Container>
   );
 };
 

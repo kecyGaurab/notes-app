@@ -5,7 +5,6 @@
   "author": "Gaurab Kecy",
   "license": "MIT",
   "dependencies": {
-    "@material-ui/styles": "^4.10.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
@@ -41,8 +40,5 @@
   },
   "jest": {
     "testEnvironment": "node"
-  },
-  "engines": {
-    "node": "12.16.2"
   }
 }

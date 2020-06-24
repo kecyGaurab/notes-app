@@ -25,8 +25,8 @@ notesRouter.get('/', async (request, response) => {
 notesRouter.post('/', async (request, response, next) => {
   const { body } = request;
   const note = new Note({
+    title: body.title,
     content: body.content,
-    done: body.done || false,
     date: new Date(),
   });
   try {
@@ -50,8 +50,8 @@ notesRouter.put('/:id', async (request, response, next) => {
   const { body } = request;
 
   const note = {
+    done: body.title,
     content: body.content,
-    done: body.done,
   };
 
   try {
